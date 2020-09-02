@@ -1,0 +1,19 @@
+$(document).ready(function() {
+      $('.form1').find('.data').change(function(event) {
+        event.preventDefault();
+
+        var formdata = {
+          'y': $('#year').val()
+          'd': $('.data').val()
+        }
+
+        $.ajax({
+          url: '/getdata1/',
+          type: 'POST',
+          data: formdata,
+          success: function(result) {
+            $('.data1').html(result);
+         }
+        });
+     });
+    });

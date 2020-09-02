@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>table</title>
+	
+    <script src="{{url_for('static',filename ='jquery-3.3.1.min.js' )}}"></script>
+	<style type="text/css">
+		table,th,td {
+			border: 1px solid black;
+			border-collapse: collapse;
+		}
+
+		th, td {
+			padding: 5px;
+		}
+	</style>
+</head>
+<body>
+<div class="conatiner">
+
+   	<button class="button" style="display: inline-block;">Download Excel</button>
+	
+   <form action="/home1/" method="POST">
+       <button>Home</button>
+       <input type="hidden" name="user" value="{{user}}">
+   </form>
+</div>	
+
+<h5>College : {{resu[1][0]}}</h5>
+<h5>Department : {{resu[1][1]}}</h5>
+<hr>
+
+<div style="display: inline-block; ">
+		
+		<div style="display: inline-block; width: 8cm; margin: auto;">
+			<h3>Student count (Feedback Given)</h3>
+
+				<table style="border" id="table2excel3">
+					<thead>
+	  						<tr>
+								<th>Year</th>
+								<th>Division</th>
+								<th>Count</th>
+	  						</tr>
+					</thead>
+
+					<tbody>
+					{% for i in range(resu3|count)%}
+						<tr>
+							<td>{{resu3[i][2]}}</td>
+							<td>{{resu3[i][3]}}</td>
+							<td>{{resu3[i][4]}}</td>
+						</tr>
+					{% endfor %}
+					</tbody>
+				</table>
+		</div>
+
+		<div style="display: inline-block; width: 8cm; margin: auto;">
+			<h3>Total Student Count</h3>
+				<table style="border" id="table2excel2">
+					<thead>
+	  						<tr>
+								<th>Year</th>
+								<th>Division</th>
+								<th>Count</th>
+	  						</tr>
+					</thead>
+
+					<tbody>
+					{% for i in range(resu4|count)%}
+						<tr>
+							<td>{{resu4[i][2]}}</td>
+							<td>{{resu4[i][3]}}</td>
+							<td>{{resu4[i][4]}}</td>
+						</tr>
+					{% endfor %}
+					</tbody>
+				</table>
+		</div>
+</div>
+<br>
+
+<h4>Theory Feedback</h4>
+<table style="border" id="table2excel">
+	<thead>
+	  <tr>
+		<th>Teacher</th>
+		<th>Year</th>
+		<th>Division</th>
+		<th>Subject</th>
+		<th>Voice Quality</th>
+		<th>Presentation on Board</th>
+		<th>Syllabus covered</th>
+		<th>Subject Knowledge</th>
+		<th>Communication Skills</th>
+		<th>Interaction With Students</th>
+		<th>Quality of Study Material</th>
+		<th>Doubt Cleared</th>
+		<th>Puntuality</th>
+		<th>Teaching Speed</th>
+		<th>Overall Performance</th>
+		<th>Date</th>
+	  </tr>
+	</thead>
+	<tbody>
+	{% for i in range(resu|count)%}
+		<tr>
+			<td>{{resu[i][2]}}</td>
+			<td>{{resu[i][3]}}</td>
+			<td>{{resu[i][4]}}</td>
+			<td>{{resu[i][5]}}</td>
+			<td>{{resu[i][6]}} %</td>
+			<td>{{resu[i][7]}} %</td>
+			<td>{{resu[i][8]}} %</td>
+			<td>{{resu[i][9]}} %</td>
+			<td>{{resu[i][10]}} %</td>
+			<td>{{resu[i][11]}} %</td>
+			<td>{{resu[i][12]}} %</td>
+			<td>{{resu[i][13]}} %</td>
+			<td>{{resu[i][14]}} %</td>
+			<td>{{resu[i][15]}} %</td>
+			<td>{{resu[i][16]}} %</td>
+			<td>{{resu[i][17]}} </td>
+		</tr>
+	{% endfor %}
+	</tbody>
+</table>
+<br>
+
+<h4>BE Elective Feedback</h4>
+<table style="border" id="table2excelbe">
+	<thead>
+	  <tr>
+		<th>Teacher</th>
+		<th>Year</th>
+		<th>Subject</th>
+		<th>Voice Quality</th>
+		<th>Presentation on Board</th>
+		<th>Syllabus covered</th>
+		<th>Subject Knowledge</th>
+		<th>Communication Skills</th>
+		<th>Interaction With Students</th>
+		<th>Quality of Study Material</th>
+		<th>Doubt Cleared</th>
+		<th>Puntuality</th>
+		<th>Teaching Speed</th>
+		<th>Overall Performance</th>
+		<th>Date</th>
+	  </tr>
+	</thead>
+	<tbody>
+	{% for i in range(resu2|count)%}
+		<tr>
+			<td>{{resu2[i][2]}}</td>
+			<td>{{resu2[i][3]}}</td>
+			<td>{{resu2[i][4]}}</td>
+			<td>{{resu2[i][5]}}</td>
+			<td>{{resu2[i][6]}} %</td>
+			<td>{{resu2[i][7]}} %</td>
+			<td>{{resu2[i][8]}} %</td>
+			<td>{{resu2[i][9]}} %</td>
+			<td>{{resu2[i][10]}} %</td>
+			<td>{{resu2[i][11]}} %</td>
+			<td>{{resu2[i][12]}} %</td>
+			<td>{{resu2[i][13]}} %</td>
+			<td>{{resu2[i][14]}} %</td>
+			<td>{{resu2[i][15]}} %</td>
+			<td>{{resu2[i][16]}} </td>
+		</tr>
+	{% endfor %}
+	</tbody>
+</table>
+<br><br>
+
+<h4>Practical Feedback</h4>
+<table style="border" id="table2excel1">
+	<thead>
+	  <tr>
+		<th>Teacher</th>
+		<th>Year</th>
+		<th>Division</th>
+		<th>Subject</th>
+		<th>Preparation of Write-Up</th>
+		<th>co-relation in Theo & Practical</th>
+		<th>Continuous Assessment</th>
+		<th>Skill Developement Through Creativity</th>
+		<th>Effective utilization of Practical Slot</th>
+		<th>Discuss Oral Questions</th>
+		<th>Overall performance</th>
+		<th>Date</th>
+	  </tr>
+	</thead>
+	<tbody>
+	{% for i in range(resu1|count)%}
+		<tr>
+			<td>{{resu1[i][2]}}</td>
+			<td>{{resu1[i][3]}}</td>
+			<td>{{resu1[i][4]}}</td>
+			<td>{{resu1[i][5]}}</td>
+			<td>{{resu1[i][6]}} %</td>
+			<td>{{resu1[i][7]}} %</td>
+			<td>{{resu1[i][8]}} %</td>
+			<td>{{resu1[i][9]}} %</td>
+			<td>{{resu1[i][10]}} %</td>
+			<td>{{resu1[i][11]}} %</td>
+			<td>{{resu1[i][12]}} %</td>
+			<td>{{resu1[i][13]}} </td>
+		</tr>
+	{% endfor %}
+	</tbody>
+</table>
+<br><br>
+
+
+<div style="display: inline-block; width: auto;">
+		
+		<div style="display: inline-block;">
+			<h3>Theory Overview</h3>
+
+				<table style="border" id="table2excel3">
+					<thead>
+	  						<tr>
+								<th>Year</th>
+								<th>Division</th>
+								<th>Teacher</th>
+								<th>Subject</th>
+								<th>Overall Performance</th>
+	  						</tr>
+					</thead>
+
+					<tbody>
+					{% for i in range(resu|count)%}
+						<tr>
+							<td>{{resu[i][3]}}</td>
+							<td>{{resu[i][4]}}</td>
+							<td>{{resu[i][2]}}</td>
+							<td>{{resu[i][5]}}</td>
+							<td>{{resu[i][13]}} %</td>
+						</tr>
+					{% endfor %}
+					</tbody>
+				</table>
+		</div>
+
+		<div style="display: inline-block;">
+			<h3>Practical Overview</h3>
+				<table style="border" id="table2excel2">
+					<thead>
+					  <tr>
+						<th>Year</th>
+						<th>Division</th>
+						<th>Teacher</th>
+						<th>Subject</th>
+						<th>Overall Performance</th>
+					  </tr>
+					</thead>
+					<tbody>
+					{% for i in range(resu1|count)%}
+						<tr>
+							<td>{{resu1[i][3]}}</td>
+							<td>{{resu1[i][4]}}</td>
+							<td>{{resu1[i][2]}}</td>
+							<td>{{resu1[i][5]}}</td>
+							<td>{{resu1[i][12]}} %</td>
+						</tr>
+					{% endfor %}
+					</tbody>
+				</table>
+		</div>
+</div>
+
+
+
+<script type="text/javascript">
+$(document).ready(function() {
+ $(".button").click(function(){
+  $("#table2excel").table2excel({
+    filename:"Theory"
+   });
+
+  $("#table2excel1").table2excel({
+    filename:"Practical"
+   });
+
+  $("#table2excel2").table2excel({
+    filename:"Divisionwise_prac"
+   });
+
+  $("#table2excel3").table2excel({
+    filename:"Divisionwise_theo"
+   });
+
+  $("#table2excelbe").table2excel({
+    filename:"BE_Electives"
+   });
+  });
+ });
+
+</script>
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<script src="{{url_for('static',filename ='jquery.table2excel.js' )}}"></script>
+</body>
+</html>

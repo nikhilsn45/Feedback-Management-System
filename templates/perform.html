@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>table</title>
+    <script src="{{url_for('static',filename ='jquery-3.3.1.min.js' )}}"></script>
+	<style type="text/css">
+		table,th,td {
+			border: 1px solid black;
+			border-collapse: collapse;
+		}
+
+		th, td {
+			padding: 5px;
+		}
+	</style>
+</head>
+<body>
+   <button class="button" style="display: inline-block;">Download Excel</button>
+   <form action="/home1/" method="POST">
+       <button>Home</button>
+       <input type="hidden" name="user" value="{{user}}">
+   </form>
+</div>	
+
+	<table style="border;" id="table2excel">
+             <thead>
+               <tr>
+               <th>Teacher Name</th>
+               <th>Subject</th>
+               <th>Year</th>
+               <th>Division</th>
+               <th>Type(TH/PR)</th>
+               <th>Batch(if type is Prac)</th>
+               </tr>
+             </thead>
+    </table>
+
+    <table style="border;" id="table2excel1">
+             <thead>
+               <tr>
+               <th>Teacher Name</th>
+               <th>Elective-1</th>
+               <th>Elective-2</th>
+               </tr>
+             </thead>
+    </table>
+
+    <table style="border;" id="table2excel2">
+             <thead>
+               <tr>
+               <th>year</th>
+               <th>division</th>
+               <th>count</th>
+               </tr>
+             </thead>
+    </table>
+
+
+<script type="text/javascript">
+$(document).ready(function() {
+ $(".button").click(function(){
+  $("#table2excel").table2excel({
+    filename:"Faculty"
+    });
+  $("#table2excel1").table2excel({
+    filename:"Elective"
+    });
+  $("#table2excel2").table2excel({
+    filename:"student_count"
+    });
+   });
+  });
+
+</script>
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<script src="{{url_for('static',filename ='jquery.table2excel.js' )}}"></script>
+</body>
+</html>

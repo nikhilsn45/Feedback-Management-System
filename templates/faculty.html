@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>M.A.N.A.G.E.</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    
+    <link href="https://fonts.googleapis.com/css?family=Muli:300,400,700,900" rel="stylesheet">
+
+    <script src="{{url_for('static',filename ='jquery-3.3.1.min.js' )}}"></script>
+    <script src="{{url_for('static',filename ='aj.js' )}}"></script>
+
+
+    <link rel="stylesheet" href="{{url_for('static',filename = 'icomoon/style.css')}}">
+    <link rel="stylesheet" href="{{url_for('static',filename = 'bootstrap.min.css')}}">
+    <link rel="stylesheet" href="{{url_for('static',filename = 'jquery-ui.css')}}">
+    <link rel="stylesheet" href="{{url_for('static',filename = 'owl.carousel.min.css')}}">
+    <link rel="stylesheet" href="{{url_for('static',filename = 'owl.theme.default.min.css')}}">
+    <link rel="stylesheet" href="{{url_for('static',filename = 'owl.theme.default.min.css')}}">
+    <link rel="stylesheet" href="{{url_for('static',filename = 'jquery.fancybox.min.css')}}">
+    <link rel="stylesheet" href="{{url_for('static',filename = 'bootstrap-datepicker.css')}}">
+    <link rel="stylesheet" href="{{url_for('static',filename = 'flaticon/font/flaticon.css')}}">
+    <link rel="stylesheet" href="{{url_for('static',filename = 'aos.css')}}">
+    <link rel="stylesheet" href="{{url_for('static',filename = 'style.css')}}">
+    
+  </head>
+  <body data-spy="scroll" data-target=".site-navbar-target" data-offset="300">
+  
+  <div class="site-wrap">
+
+    <div class="site-mobile-menu site-navbar-target">
+      <div class="site-mobile-menu-header">
+        <div class="site-mobile-menu-close mt-3">
+          <span class="icon-close2 js-menu-toggle"></span>
+        </div>
+      </div>
+      <div class="site-mobile-menu-body"></div>
+    </div>
+   
+    
+    <header class="site-navbar py-4 js-sticky-header site-navbar-target" role="banner">
+      
+      <div class="container-fluid">
+        <div class="d-flex align-items-center">
+          <div class="site-logo mr-auto w-25"><a href="{{url_for('home')}}">M.A.N.A.G.E.</a></div>
+          
+          <div class="row align-items-center">
+              <form action="/home1/" method="POST">
+                <input style="margin: 10px;" type="submit" class="btn primary" value="Home" name="home">
+              </form>
+              <form action="/logout/" method="POST">
+                <input style="margin: 10px;" type="submit" class="btn btn-primary" value="Logout" name="logout">
+              </form>
+          </div>
+        </div>
+        
+      </div>
+      
+    </header>
+
+    <div class="intro-section" id="home-section">
+      
+      <div class="slide-1" style="background-image: url('http://localhost:5000/static/img_1.jpg'); background-repeat: repeat-x;">
+        <div class="container">
+          <div class="row align-items-center" >
+            <div class="col-lg-12" style="margin-top:120px;">
+              <div>
+                <form action="/down/" method="post">
+                     <input type="submit" name="Excel" value="Excel" class="btn btn-primary">
+                </form>
+            </div>
+             <div class="row align-items-center form-group">
+
+                  
+               <div  class="col-lg-4">
+
+                  <form action="#" method="POST" class="form1 form-box"> 
+                    
+
+                       <div class="container">
+                         <div class="form-group">
+                           <select class="form-control teach" name="teach" id="t1" required>
+                              {% for i in range(res|count) %}
+                                  <option value="{{res[i][0]}}">{{res[i][0]}}</option>
+                              {%endfor%}
+                           </select>
+
+                          </div>
+
+
+                         <div class="form-group">
+                              <select class="form-control year" name="y" id="y1" required>
+                        
+                              </select>
+                         </div>
+                         
+                         <div class="form-group">
+                               <select name="d" class="form-control" id="div" required>
+
+                               </select>
+                          </div>
+
+                         <div class="form-group">
+                               <select class="form-control sub" name="subject" required>
+                        
+                               </select>
+                         </div>
+
+                          <div class="container">
+                             <input style="margin-top: 10px;" class="btn btn-primary btn-pill form-control" type="submit" id="data" value="get">
+                          </div>
+                       </div>   
+
+                  </form>
+
+                </div>
+
+
+                 <div style="text-align: center;" class="col-lg-8 rate">
+                  <h5>YOUR DATA WILL BE HERE</h5>
+                 </div>
+               
+              </div>
+
+            </div>
+               
+          </div>
+          
+        </div>
+      </div>
+    </div>
+  </div>
+               
+ 
+
+<script type="text/javascript">
+
+   $(document).ready(function() {
+     $('.form1').find('#t1').click(function(event) {
+        event.preventDefault();
+
+        var formdata = {
+          't': $('#t1').val()
+        }
+
+        $.ajax({
+          url: '/getdata/',
+          type: 'POST',
+          data: formdata,
+          success: function(result) {
+            $('.year').html(result);
+         }
+        });
+     });
+     });
+
+
+   $(document).ready(function() {
+     $('.form1').find('#y1').click(function(event) {
+        event.preventDefault();
+
+        var formdata = {
+          'y': $('#y1').val(),
+          'tt': $('#t1').val()
+        }
+
+        $.ajax({
+          url: '/getdiv1/',
+          type: 'POST',
+          data: formdata,
+          success: function(result) {
+            $('#div').html(result); 
+         }
+        });
+     });
+    });
+
+    $(document).ready(function() {
+     $('.form1').find('#div').click(function(event) {
+        event.preventDefault();
+
+        var formdata = {
+          'y': $('#y1').val(),
+          'tt': $('#t1').val(),
+          'dd': $('#div').val()
+        }
+
+        $.ajax({
+          url: '/getsub1/',
+          type: 'POST',
+          data: formdata,
+          success: function(result) {
+            $('.sub').html(result); 
+         }
+        });
+     });
+    });
+
+    $(document).ready(function() {
+     $('.form1').find('#data').click(function(event) {
+        event.preventDefault();
+
+        var formdata = {
+          'y': $('#y1').val(),
+          'tt': $('#t1').val(),
+          'dd': $('#div').val(),
+          'ss': $('.sub').val()
+        }
+
+        $.ajax({
+          url: '/rating/',
+          type: 'POST',
+          data: formdata,
+          success: function(result) {
+            $('.rate').html(result); 
+         }
+        });
+     });
+    });
+
+</script>
+  
+
+  <script src="{{url_for('static',filename ='jquery-3.3.1.min.js' )}}"></script>
+  
+  <script src="{{url_for('static',filename = 'jquery-migrate-3.0.1.min.js')}}"></script>
+  <script src="{{url_for('static',filename = 'owl.carousel.min.js')}}"></script>
+  <script src="{{url_for('static',filename = 'jquery.stellar.min.js')}}"></script>
+  <script src="{{url_for('static',filename = 'jquery.countdown.min.js')}}"></script>
+  <script src="{{url_for('static',filename = 'aos.js')}}"></script>
+  <script src="{{url_for('static',filename = 'jquery.fancybox.min.js')}}"></script>
+  <script src="{{url_for('static',filename = 'jquery.sticky.js')}}"></script>
+  <script src="{{url_for('static',filename = 'main.js')}}"></script>
+ 
+  
+    
+  </body>
+</html>

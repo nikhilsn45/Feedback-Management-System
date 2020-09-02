@@ -1,0 +1,42 @@
+<div class="row align-items-center">
+<div class="col-lg-6 form-group">
+    <label>Elective-1</label>
+     <select class="form-control" name="el1" required>
+        {% for i in range(res1|count) %}
+            <option value="{{res1[i][0]}}">{{res1[i][0]}}</option>
+        {%endfor%}
+     </select>
+</div>
+
+<div class="col-lg-6 form-group">
+    <label>Teacher Name</label>
+     <select class="form-control" name="tea1" required>
+     	
+        {% for i in range(res3|count) %}
+            <option value="{{res3[i][0]}}">{{res3[i][0]}}</option>
+        {%endfor%}
+
+     </select>
+</div>
+</div>
+
+<div class="row align-items-center">
+<div class="col-lg-6 form-group">
+    <label>Elective-2</label>
+     <select class="form-control" name="el2" required>
+        {% for i in range(res2|count) %}
+            <option value="{{res2[i][0]}}">{{res2[i][0]}}</option>
+        {%endfor%}
+     </select>
+</div>
+
+<div class="col-lg-6 form-group">
+    <label>Teacher Name</label>
+     <select class="form-control" name="tea2" required>
+        {% for i in range(res3|count) %}
+            <option value="{{res3[i][0]}}">{{res3[i][0]}}</option>
+        {%endfor%}
+     </select>
+</div>
+
+</div>

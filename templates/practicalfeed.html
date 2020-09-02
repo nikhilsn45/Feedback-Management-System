@@ -1,0 +1,458 @@
+<!--<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>M.A.N.A.G.E.</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    
+    
+    <link href="https://fonts.googleapis.com/css?family=Muli:300,400,700,900" rel="stylesheet">
+
+    <link rel="stylesheet" href="{{url_for('static',filename = 'icomoon/style.css')}}">
+    <link rel="stylesheet" href="{{url_for('static',filename = 'bootstrap.min.css')}}">
+    <link rel="stylesheet" href="{{url_for('static',filename = 'jquery-ui.css')}}">
+    <link rel="stylesheet" href="{{url_for('static',filename = 'owl.carousel.min.css')}}">
+    <link rel="stylesheet" href="{{url_for('static',filename = 'owl.theme.default.min.css')}}">
+    <link rel="stylesheet" href="{{url_for('static',filename = 'owl.theme.default.min.css')}}">
+    <link rel="stylesheet" href="{{url_for('static',filename = 'jquery.fancybox.min.css')}}">
+    <link rel="stylesheet" href="{{url_for('static',filename = 'bootstrap-datepicker.css')}}">
+    <link rel="stylesheet" href="{{url_for('static',filename = 'flaticon/font/flaticon.css')}}">
+    <link rel="stylesheet" href="{{url_for('static',filename = 'aos.css')}}">
+    <link rel="stylesheet" href="{{url_for('static',filename = 'style.css')}}">
+    
+    <style type="text/css">
+      
+     @media screen and (max-width: 1000px){
+          .feed-container{
+            margin-top: 200px;
+          }
+         }
+    </style>
+
+  </head>
+  <body data-spy="scroll" data-target=".site-navbar-target" data-offset="300">
+  
+  <div class="site-wrap">
+
+    <div class="site-mobile-menu site-navbar-target">
+      <div class="site-mobile-menu-header">
+        <div class="site-mobile-menu-close mt-3">
+          <span class="icon-close2 js-menu-toggle"></span>
+        </div>
+      </div>
+      <div class="site-mobile-menu-body"></div>
+    </div>
+   
+
+    <div class="intro-section" id="home-section">
+      
+      <div class="slide-1" style="background-image: url('/static/img_1.jpg');" data-stellar-background-ratio="0.5">
+       
+        <div class="container">
+
+          <div class="row align-items-center">
+
+            <div class="col-lg-12">
+
+            <div class="row align-items-center" >
+
+            <div class="feed-container">
+                <form action="/sendpracfeed/" method="post" >
+
+                	 <div style="margin: auto; width: 80%;">
+                   		 <h4>Practical Feedback</h4>
+                  	</div>
+
+
+                       <div style="margin: auto; width: 80%;">
+                           <select name="teachersub" class="form-control">
+                                {% for i in range(res|count) %}
+                                   <option value="{{res[i][0]}} - {{res[i][1]}}">{{res[i][0]}} - {{res[i][1]}}</option>
+                                {%endfor%}
+                           </select>
+                       </div>
+
+
+                          <div class="container" style=" margin: auto; width: 80%; background-color: white; padding-top: 5px; padding-bottom: 5px; margin-top:10px;">
+                        
+                          <input type="hidden" name="y" value="{{year}}">
+                          <input type="hidden" name="d" value="{{div}}">
+                          <input type="hidden" name="b" value="{{batch}}">
+                          <input type="hidden" name="clg" value="{{clg}}">
+                          <input type="hidden" name="dept" value="{{dept}}">
+                          <input type="hidden" name="view" value="{{view}}">
+
+                      <div class="col-lg-12">
+                        <small>
+
+                         <div class="col-lg-12 attri" style="display: inline-block; border-bottom: double;" id="attri"> 
+                          <div class="col-lg-4" style="float: left;">
+                              <label>Preparation Of Write-Up</label>
+                          </div>
+                         <div class="col-lg-8" style="float: left;">
+                           <div>
+                                <input type="radio" name="poor" value="20">poor
+                                <input type="radio" name="poor" value="40" style="margin-left:30px;">Need Improvement
+                                <input type="radio" name="poor" value="60" style="margin-left:30px;">Satisfy
+                                <input type="radio" name="poor" value="80" style="margin-left:30px;">good
+                                <input type="radio" name="poor" value="100" style="margin-left:30px" checked>Excellent
+                           </div>
+                         </div>
+                       </div>
+
+                         <div class="col-lg-12 attri" style="display: inline-block; border-bottom: double;" id="attri"> 
+                          <div class="col-lg-4" style="float: left;">
+                              <label>Co-relation Of Theory and Practical</label>
+                          </div>
+                         <div class="col-lg-8" style="float: left;">
+                           <div>
+                                <input type="radio" name="eng" value="20">poor
+                                <input type="radio" name="eng" value="40" style="margin-left:30px;">Need Improvement
+                                <input type="radio" name="eng" value="60" style="margin-left:30px;">Satisfy
+                                <input type="radio" name="eng" value="80" style="margin-left:30px;">good
+                                <input type="radio" name="eng" value="100" style="margin-left:30px" checked>Excellent
+                           </div>
+                         </div>
+                       </div>
+
+                       <div class="col-lg-12 attri" style="display: inline-block; border-bottom: double;" id="attri"> 
+                          <div class="col-lg-4" style="float: left;">
+                            <label>Continuous Assessment</label>
+                          </div>
+                         <div class="col-lg-8" style="float: left;">
+                           <div>
+                                <input type="radio" name="fas" value="20">poor
+                                <input type="radio" name="fas" value="40" style="margin-left:30px;">Need Improvement
+                                <input type="radio" name="fas" value="60" style="margin-left:30px;">Satisfy
+                                <input type="radio" name="fas" value="80" style="margin-left:30px;">good
+                                <input type="radio" name="fas" value="100" style="margin-left:30px" checked>Excellent
+                           </div>
+                         </div>
+                       </div>
+
+                         <div class="col-lg-12 attri" style="display: inline-block; border-bottom: double;" id="attri"> 
+                          <div class="col-lg-4" style="float: left;">
+                            <label>Skill Development through Creativity & Innovations</label>
+                          </div>
+                         <div class="col-lg-8" style="float: left;">
+                           <div>
+                                <input type="radio" name="low" value="20">poor
+                                <input type="radio" name="low" value="40" style="margin-left:30px;">Need Improvement
+                                <input type="radio" name="low" value="60" style="margin-left:30px;">Satisfy
+                                <input type="radio" name="low" value="80" style="margin-left:30px;">good
+                                <input type="radio" name="low" value="100" style="margin-left:30px" checked>Excellent
+                           </div>
+                         </div>
+                       </div>
+
+                         <div class="col-lg-12 attri" style="display: inline-block; border-bottom: double;" id="attri"> 
+                          <div class="col-lg-4" style="float: left;">
+                            <label>Effective Utilization of Practical Slot</label>
+                          </div>
+                         <div class="col-lg-8" style="float: left;">
+                           <div>
+                               <input type="radio" name="improp" value="20">poor
+                               <input type="radio" name="improp" value="40" style="margin-left:30px;">Need Improvement
+                               <input type="radio" name="improp" value="60" style="margin-left:30px;">Satisfy
+                               <input type="radio" name="improp" value="80" style="margin-left:30px;">good
+                               <input type="radio" name="improp" value="100" style="margin-left:30px" checked>Excellent
+                           </div>
+                         </div>
+                       </div>
+
+                         <div class="col-lg-12 attri" style="display: inline-block; border-bottom: double;" id="attri"> 
+                          <div class="col-lg-4" style="float: left;">
+                            <label>Discussion of Oral Questions</label>
+                          </div>
+                         <div class="col-lg-8" style="float: left;">
+                           <div>
+                                <input type="radio" name="pre" value="20">poor
+                                <input type="radio" name="pre" value="40" style="margin-left:30px;">Need Improvement
+                                <input type="radio" name="pre" value="60" style="margin-left:30px;">Satisfy
+                                <input type="radio" name="pre" value="80" style="margin-left:30px;">good
+                                <input type="radio" name="pre" value="100" style="margin-left:30px" checked>Excellent
+                           </div>
+                         </div>
+                         </div>
+                         
+                        </small>
+                    </div>  
+
+                        
+                    <input type="hidden" name="clg" value="{{clg}}">
+                    <input type="hidden" name="dept" value="{{dept}}">
+                          
+                      
+                          <div class="container" style="margin-top: 5px">
+                            <textarea class="form-control" name="message" placeholder="Comment Here......" rows="1" required></textarea>
+                          </div>
+                        
+                        
+
+                         <div class="container col-lg-3" style="margin-top: 10px">
+                            <input type="submit" class="btn btn-primary btn-pill form-control" value="Submit" name="submitdata">
+                         </div>
+
+                     
+                </form>
+           
+             
+                 
+            </div>  
+              
+            </div>
+                  
+            </div>
+                         
+          </div>
+
+                         
+        </div>
+      </div>
+    </div> 
+                  
+                
+                <script>
+                    $(document).ready(function() {
+                        $(".contentPost").delay(2000).fadeOut();
+                    });
+                </script>
+
+  <script src="{{url_for('static',filename ='jquery-3.3.1.min.js' )}}"></script>
+  <script src="{{url_for('static',filename = 'jquery-migrate-3.0.1.min.js')}}"></script>
+  <script src="{{url_for('static',filename = 'owl.carousel.min.js')}}"></script>
+  <script src="{{url_for('static',filename = 'jquery.stellar.min.js')}}"></script>
+  <script src="{{url_for('static',filename = 'jquery.countdown.min.js')}}"></script>
+  <script src="{{url_for('static',filename = 'aos.js')}}"></script>
+  <script src="{{url_for('static',filename = 'jquery.fancybox.min.js')}}"></script>
+  <script src="{{url_for('static',filename = 'jquery.sticky.js')}}"></script>
+  <script src="{{url_for('static',filename = 'main.js')}}"></script>
+
+    
+  </body>
+</html>-->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>M.A.N.A.G.E.</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    
+    <link href="https://fonts.googleapis.com/css?family=Muli:300,400,700,900" rel="stylesheet">
+
+    <script src="{{url_for('static',filename ='jquery-3.3.1.min.js' )}}"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script src="{{url_for('static',filename ='jquery.table2excel.js' )}}"></script>
+  <style type="text/css">
+    table,th,td {
+      border: 1px solid black;
+      border-collapse: collapse;
+    }
+
+    th, td {
+      padding: 5px;
+    }
+  </style>
+
+    <link rel="stylesheet" href="{{url_for('static',filename = 'icomoon/style.css')}}">
+    <link rel="stylesheet" href="{{url_for('static',filename = 'bootstrap.min.css')}}">
+    <link rel="stylesheet" href="{{url_for('static',filename = 'jquery-ui.css')}}">
+    <link rel="stylesheet" href="{{url_for('static',filename = 'owl.carousel.min.css')}}">
+    <link rel="stylesheet" href="{{url_for('static',filename = 'owl.theme.default.min.css')}}">
+    <link rel="stylesheet" href="{{url_for('static',filename = 'owl.theme.default.min.css')}}">
+    <link rel="stylesheet" href="{{url_for('static',filename = 'jquery.fancybox.min.css')}}">
+    <link rel="stylesheet" href="{{url_for('static',filename = 'bootstrap-datepicker.css')}}">
+    <link rel="stylesheet" href="{{url_for('static',filename = 'flaticon/font/flaticon.css')}}">
+    <link rel="stylesheet" href="{{url_for('static',filename = 'aos.css')}}">
+    <link rel="stylesheet" href="{{url_for('static',filename = 'style.css')}}">
+    
+  </head>
+  <body class="slide-1" data-spy="scroll" data-target=".site-navbar-target" data-offset="300" style="background-image: url('http://localhost:5000/static/img_1.jpg'); background-repeat: unset; background-color: grey;">
+   
+    <div class="site-navbar py-4 js-sticky-header site-navbar-target" role="banner">
+      
+      <div class="container-fluid">
+        <div class="d-flex align-items-center">
+          <div class="site-logo mr-auto w-25">
+            <a href="{{url_for('home')}}">M.A.N.A.G.E.</a></div>              
+        </div>
+      </div> 
+  </div>
+
+      
+      <div style=" height: auto;" data-stellar-background-ratio="0.5">
+        <div class="container">
+          <div class="row align-items-center">
+             <div class="feed-container" style="margin-top: 100px;z-index: 100">
+                <form action="/sendpracfeed/" method="post" >
+
+                   <div style="margin: auto; width: 80%;">
+                       <h4>Practical Feedback</h4>
+                    </div>
+
+
+                       <div style="margin: auto; width: 80%;">
+                           <select name="teachersub" class="form-control">
+                                {% for i in range(res|count) %}
+                                   <option value="{{res[i][0]}} - {{res[i][1]}}">{{res[i][0]}} - {{res[i][1]}}</option>
+                                {%endfor%}
+                           </select>
+                       </div>
+
+
+                          <div class="container" style=" margin: auto; width: 80%; background-color: white; padding-top: 5px; padding-bottom: 5px; margin-top:10px;">
+                        
+                          <input type="hidden" name="y" value="{{year}}">
+                          <input type="hidden" name="d" value="{{div}}">
+                          <input type="hidden" name="b" value="{{batch}}">
+                          <input type="hidden" name="clg" value="{{clg}}">
+                          <input type="hidden" name="dept" value="{{dept}}">
+                          <input type="hidden" name="view" value="{{view}}">
+
+                      <div class="col-lg-12">
+                        <small>
+
+                         <div class="col-lg-12 attri" style="display: inline-block; border-bottom: double;" id="attri"> 
+                          <div class="col-lg-4" style="float: left;">
+                              <label>Preparation Of Write-Up</label>
+                          </div>
+                         <div class="col-lg-8" style="float: left;">
+                           <div>
+                                <input type="radio" name="poor" value="20">poor
+                                <input type="radio" name="poor" value="40" style="margin-left:30px;">Need Improvement
+                                <input type="radio" name="poor" value="60" style="margin-left:30px;">Satisfy
+                                <input type="radio" name="poor" value="80" style="margin-left:30px;">good
+                                <input type="radio" name="poor" value="100" style="margin-left:30px" checked>Excellent
+                           </div>
+                         </div>
+                       </div>
+
+                         <div class="col-lg-12 attri" style="display: inline-block; border-bottom: double;" id="attri"> 
+                          <div class="col-lg-4" style="float: left;">
+                              <label>Co-relation Of Theory and Practical</label>
+                          </div>
+                         <div class="col-lg-8" style="float: left;">
+                           <div>
+                                <input type="radio" name="eng" value="20">poor
+                                <input type="radio" name="eng" value="40" style="margin-left:30px;">Need Improvement
+                                <input type="radio" name="eng" value="60" style="margin-left:30px;">Satisfy
+                                <input type="radio" name="eng" value="80" style="margin-left:30px;">good
+                                <input type="radio" name="eng" value="100" style="margin-left:30px" checked>Excellent
+                           </div>
+                         </div>
+                       </div>
+
+                       <div class="col-lg-12 attri" style="display: inline-block; border-bottom: double;" id="attri"> 
+                          <div class="col-lg-4" style="float: left;">
+                            <label>Continuous Assessment</label>
+                          </div>
+                         <div class="col-lg-8" style="float: left;">
+                           <div>
+                                <input type="radio" name="fas" value="20">poor
+                                <input type="radio" name="fas" value="40" style="margin-left:30px;">Need Improvement
+                                <input type="radio" name="fas" value="60" style="margin-left:30px;">Satisfy
+                                <input type="radio" name="fas" value="80" style="margin-left:30px;">good
+                                <input type="radio" name="fas" value="100" style="margin-left:30px" checked>Excellent
+                           </div>
+                         </div>
+                       </div>
+
+                         <div class="col-lg-12 attri" style="display: inline-block; border-bottom: double;" id="attri"> 
+                          <div class="col-lg-4" style="float: left;">
+                            <label>Skill Development through Creativity & Innovations</label>
+                          </div>
+                         <div class="col-lg-8" style="float: left;">
+                           <div>
+                                <input type="radio" name="low" value="20">poor
+                                <input type="radio" name="low" value="40" style="margin-left:30px;">Need Improvement
+                                <input type="radio" name="low" value="60" style="margin-left:30px;">Satisfy
+                                <input type="radio" name="low" value="80" style="margin-left:30px;">good
+                                <input type="radio" name="low" value="100" style="margin-left:30px" checked>Excellent
+                           </div>
+                         </div>
+                       </div>
+
+                         <div class="col-lg-12 attri" style="display: inline-block; border-bottom: double;" id="attri"> 
+                          <div class="col-lg-4" style="float: left;">
+                            <label>Effective Utilization of Practical Slot</label>
+                          </div>
+                         <div class="col-lg-8" style="float: left;">
+                           <div>
+                               <input type="radio" name="improp" value="20">poor
+                               <input type="radio" name="improp" value="40" style="margin-left:30px;">Need Improvement
+                               <input type="radio" name="improp" value="60" style="margin-left:30px;">Satisfy
+                               <input type="radio" name="improp" value="80" style="margin-left:30px;">good
+                               <input type="radio" name="improp" value="100" style="margin-left:30px" checked>Excellent
+                           </div>
+                         </div>
+                       </div>
+
+                         <div class="col-lg-12 attri" style="display: inline-block; border-bottom: double;" id="attri"> 
+                          <div class="col-lg-4" style="float: left;">
+                            <label>Discussion of Oral Questions</label>
+                          </div>
+                         <div class="col-lg-8" style="float: left;">
+                           <div>
+                                <input type="radio" name="pre" value="20">poor
+                                <input type="radio" name="pre" value="40" style="margin-left:30px;">Need Improvement
+                                <input type="radio" name="pre" value="60" style="margin-left:30px;">Satisfy
+                                <input type="radio" name="pre" value="80" style="margin-left:30px;">good
+                                <input type="radio" name="pre" value="100" style="margin-left:30px" checked>Excellent
+                           </div>
+                         </div>
+                         </div>
+                         
+                        </small>
+                    </div>  
+
+                        
+                    <input type="hidden" name="clg" value="{{clg}}">
+                    <input type="hidden" name="dept" value="{{dept}}">
+                          
+                      
+                          <div class="container" style="margin-top: 5px">
+                            <textarea class="form-control" name="message" placeholder="Comment Here......" rows="1" required></textarea>
+                          </div>
+                        
+                        
+
+                         <div class="container col-lg-3" style="margin-top: 10px">
+                            <input type="submit" class="btn btn-primary btn-pill form-control" value="Submit" name="submitdata">
+                         </div>
+
+                     
+                </form>
+           
+             
+                 
+            </div>  
+      
+           </div>
+        </div>
+      </div>
+ <script type="text/javascript">
+
+ 
+
+</script>          
+  
+  <script src="{{url_for('static',filename ='jquery-3.3.1.min.js' )}}"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+  <script src="{{url_for('static',filename ='jquery.table2excel.js' )}}"></script>
+
+  <script src="{{url_for('static',filename = 'jquery-migrate-3.0.1.min.js')}}"></script>
+  <script src="{{url_for('static',filename = 'owl.carousel.min.js')}}"></script>
+  <script src="{{url_for('static',filename = 'jquery.stellar.min.js')}}"></script>
+  <script src="{{url_for('static',filename = 'jquery.countdown.min.js')}}"></script>
+  <script src="{{url_for('static',filename = 'aos.js')}}"></script>
+  <script src="{{url_for('static',filename = 'jquery.fancybox.min.js')}}"></script>
+  <script src="{{url_for('static',filename = 'jquery.sticky.js')}}"></script>
+  <script src="{{url_for('static',filename = 'main.js')}}"></script>
+ 
+  
+    
+  </body>
+</html>
+
+   <!--  

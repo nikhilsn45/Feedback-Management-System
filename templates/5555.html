@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>M.A.N.A.G.E.</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    
+    <link href="https://fonts.googleapis.com/css?family=Muli:300,400,700,900" rel="stylesheet">
+
+    <script src="{{url_for('static',filename ='jquery-3.3.1.min.js' )}}"></script>
+    <!--<script src="{{url_for('static',filename ='ajx.js' )}}"></script>
+    <script src="{{url_for('static',filename ='ajx1.js' )}}"></script>-->
+
+    <link rel="stylesheet" href="{{url_for('static',filename = 'icomoon/style.css')}}">
+    <link rel="stylesheet" href="{{url_for('static',filename = 'bootstrap.min.css')}}">
+    <link rel="stylesheet" href="{{url_for('static',filename = 'jquery-ui.css')}}">
+    <link rel="stylesheet" href="{{url_for('static',filename = 'owl.carousel.min.css')}}">
+    <link rel="stylesheet" href="{{url_for('static',filename = 'owl.theme.default.min.css')}}">
+    <link rel="stylesheet" href="{{url_for('static',filename = 'owl.theme.default.min.css')}}">
+    <link rel="stylesheet" href="{{url_for('static',filename = 'jquery.fancybox.min.css')}}">
+    <link rel="stylesheet" href="{{url_for('static',filename = 'bootstrap-datepicker.css')}}">
+    <link rel="stylesheet" href="{{url_for('static',filename = 'flaticon/font/flaticon.css')}}">
+    <link rel="stylesheet" href="{{url_for('static',filename = 'aos.css')}}">
+    <link rel="stylesheet" href="{{url_for('static',filename = 'style.css')}}">
+    
+  </head>
+  <body data-spy="scroll" data-target=".site-navbar-target" data-offset="300">
+   
+    <div class="site-navbar py-4 js-sticky-header site-navbar-target" role="banner">
+      
+      <div class="container-fluid">
+        <div class="d-flex align-items-center">
+          <div class="site-logo mr-auto w-25">
+            <a href="{{url_for('home')}}">M.A.N.A.G.E.</a></div>
+            <div class="row">
+
+            <form action="/logout/" method="POST">
+                <input type="submit" class="btn btn-primary" value="Logout" name="logout">
+            </form>
+            </div>  
+        </div>
+      </div>
+  </div>
+
+  <div class="intro-section" id="home-section">
+      
+      <div class="slide-1" style="background-image: url('http://localhost:5000/static/img_1.jpg');" data-stellar-background-ratio="0.5">
+        <div class="container">
+          <div class="row align-items-center">
+             
+      <div class="col-12" style="margin-top: 100px">
+        {%if success%}
+                <div class="container col-lg-6 form-control" style="text-align: center; background-color: #29e100;
+                border-style: none; color: white; z-index: 10" data-aos="fade-down" data-aos-delay="500">
+                        <h6>{{success}}</h6>
+                </div>
+
+          {%endif%}
+            
+          {%if failed%}
+                <div class="container col-lg-6 form-control" style="text-align: center; background-color: #fc4646;
+                border-style: none; color: white; z-index: 10" data-aos="fade-down" data-aos-delay="500">
+                        <h6>{{failed}}</h6>
+                </div>
+
+          {%endif%}
+          
+               <div class="form-group sel" style="margin-top: 10px;">
+                <label class="radio-inline">
+                   <input type="radio" name="subj" id="ad" value='Theory'checked>ADD INFO.  
+                </label>
+                       
+                <label class="radio-inline">
+                  <input type="radio" name="subj" id="de" value="Practical">DELETE INFO.
+                </label>
+              </div>
+
+          <div class="row align-items-center form-group add" >
+                <div class="col-lg-6" style="margin-bottom: 5px;">
+                   <form action="/send/" method="post" class="form-box form2">
+                         
+                           <h3 class="h4 text-black mb-4">ASSIGN FACULTY</h3>
+                           
+                           <div class="form-group">
+                            <label>Faculty Name</label>
+                              <select class="form-control teacher1" name="subteacher">
+                                    {% for i in range(res1|count) %}
+                                       <option value="{{res1[i][0]}}">{{res1[i][0]}}</option>
+                                    {% endfor %}
+                               </select>
+                          </div>
+
+
+                            <div class="form-group">
+                              <label>Year</label>
+                                  <select class="form-control year1" name="year1">
+                                        <option value="1st">1st Year</option>
+                                        <option value="2nd">2nd Year</option>
+                                        <option value="3rd">3rd Year</option>
+                                        <option value="4th">4th Year</option>
+                                  </select>
+                            </div>
+
+                            <div class="form-group sub">
+           
+                              <label>Subject</label>
+                                 <select class="form-control subject1" name="subject">
+
+                                 </select>
+                             </div>
+                    
+                           <div class="form-group div">
+                              <label>Division</label>
+                                <select class="form-control div1" name="divisi1" >
+                                </select>
+                           </div>
+
+                           <div>
+                             <label class="radio-inline">
+                                    <input type="radio" name="subj" id="theo" value='Theory'checked>Theory Lecture
+                              </label>
+                       
+                              <label class="radio-inline">
+                                    <input type="radio" name="subj" id="prac" value="Practical">Practical
+                             </label>
+                           </div>
+
+                           <div class="form-group batch2">
+                              <label>Batch</label>
+                                <select class="form-control batch1" name="batch" >
+                                </select>
+                           </div>
+      
+
+                          <div class="form-group">
+                               <input type="submit" class="btn btn-primary btn-pill" value="Submit" name="submitdata">
+                          </div>
+                        
+                    </form>
+
+                </div>
+
+                <div class="col-lg-6" style="text-align: center;">
+                  <div class="form-group" style="display: inline-block;">
+                  <form action="/faculty/" method="POST">
+                      <input type="submit" class="btn btn-primary" value="Faculty" name="logout">
+                  </form>
+                  </div>
+
+                  <div class="form-group" style="display: inline-block;">
+                  <form action="/edit/" method="POST">
+                      <input style="margin-right: 5px;margin-left: 5px;" type="submit" class="btn primary" value="Edit data" name="edit">
+                  </form>
+                  </div>
+                </div>
+
+                
+          </div>
+
+          <div class="row align-items-center form-group del" >
+                <div class="col-lg-6" style="margin-bottom: 5px;">
+                   <form action="/delete/" method="post" class="form-box form2">
+                         
+                           <h3 class="h4 text-black mb-4">ASSIGN FACULTY</h3>
+                           
+                           <div class="form-group">
+                            <label>Faculty Name</label>
+                              <select class="form-control teacher1" name="subteacher">
+                                    {% for i in range(res1|count) %}
+                                       <option value="{{res1[i][0]}}">{{res1[i][0]}}</option>
+                                    {%endfor%}
+                               </select>
+                          </div>
+
+
+                            <div class="form-group">
+                              <label>Year</label>
+                                  <select class="form-control year1" name="year1">
+                                        <option value="1st">1st Year</option>
+                                        <option value="2nd">2nd Year</option>
+                                        <option value="3rd">3rd Year</option>
+                                        <option value="4th">4th Year</option>
+                                  </select>
+                            </div>
+
+                            <div class="form-group sub">
+           
+                              <label>Subject</label>
+                                 <select class="form-control subject1" name="subject">
+
+                                 </select>
+                             </div>
+                    
+                           <div class="form-group div">
+                              <label>Division</label>
+                                <select class="form-control div1" name="divisi1" >
+                                </select>
+                           </div>
+
+                           <div>
+                             <label class="radio-inline">
+                                    <input type="radio" name="subj" id="theo" value='Theory'checked>Theory Lecture
+                              </label>
+                       
+                              <label class="radio-inline">
+                                    <input type="radio" name="subj" id="prac" value="Practical">Practical
+                             </label>
+                           </div>
+
+                           <div class="form-group batch2">
+                              <label>Batch</label>
+                                <select class="form-control batch1" name="batch" >
+                                </select>
+                           </div>
+      
+
+                          <div class="form-group">
+                               <input type="submit" class="btn btn-primary btn-pill" value="Delete" name="delete">
+                          </div>
+                        
+                    </form>
+
+                </div>
+
+                <div class="col-lg-6" style="text-align: center;">
+                  <div class="form-group" style="display: inline-block;">
+                  <form action="/faculty/" method="POST">
+                      <input type="submit" class="btn btn-primary" value="Faculty" name="logout">
+                  </form>
+                  </div>
+
+                  <div class="form-group" style="display: inline-block;">
+                  <form action="/excel/" method="POST">
+                      <input style="margin-right: 5px;margin-left: 5px;" type="submit" class="btn primary" value="Edit data" name="edit">
+                  </form>
+                  </div>
+                </div>
+
+                
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+  </div>
+
+
+
+
+
+   
+   <script type="text/javascript">
+    $(document).ready(function() {
+        $(".del").hide();
+     });
+
+     $(document).ready(function() {
+        $('.sel').find('#ad').click(function(event) {
+          $(".del").hide();
+          $(".add").show();
+        })
+     });
+
+     $(document).ready(function() {
+        $('.sel').find('#de').click(function(event) {
+          $(".add").hide();
+          $(".del").show();
+        })
+     });
+
+  
+    $(document).ready(function() {
+     $('.batch2').hide();
+    });
+
+    $(document).ready(function() {
+      $('.form2').find('.year1').click(function(event){
+        event.preventDefault();
+
+        var formdata = {
+          'year': $('.year1').val()
+        }
+
+        $.ajax({
+          url: '/getsub/',
+          type: 'POST',
+          data: formdata,
+          success: function(result) {
+            $('.subject1').html(result);
+         }
+        });
+      })
+    });
+
+    $(document).ready(function() {
+     $('.form2').find('.subject1').click(function(event) {
+        event.preventDefault();
+
+        var formdata = {
+          'year': $('.year1').val()
+        }
+
+        $.ajax({
+          url: '/getdiv/',
+          type: 'POST',
+          data: formdata,
+          success: function(result) {
+            $('.div1').html(result);
+         }
+        });
+     });
+     });
+
+    $(document).ready(function() {
+     $('.form2').find('.div1').click(function(event) {
+        event.preventDefault();
+
+        var formdata = {
+          'year': $('.year1').val(),
+          'div1': $('.div1').val()
+        }
+
+        $.ajax({
+          url: '/getbatch/',
+          type: 'POST',
+          data: formdata,
+          success: function(result) {
+            $('.batch1').html(result);
+         }
+        });
+     });
+     });
+
+
+    $(document).ready(function() {
+      $('.form2').find('#theo').click(function(event){
+        $('.batch2').hide();
+      })
+    });
+
+    $(document).ready(function() {
+      $('.form2').find('#prac').click(function(event){
+        $('.batch2').show();
+      })
+    });
+
+    
+</script>
+
+  <script src="{{url_for('static',filename ='jquery-3.3.1.min.js' )}}"></script>
+  
+  <script src="{{url_for('static',filename = 'jquery-migrate-3.0.1.min.js')}}"></script>
+  <script src="{{url_for('static',filename = 'owl.carousel.min.js')}}"></script>
+  <script src="{{url_for('static',filename = 'jquery.stellar.min.js')}}"></script>
+  <script src="{{url_for('static',filename = 'jquery.countdown.min.js')}}"></script>
+  <script src="{{url_for('static',filename = 'aos.js')}}"></script>
+  <script src="{{url_for('static',filename = 'jquery.fancybox.min.js')}}"></script>
+  <script src="{{url_for('static',filename = 'jquery.sticky.js')}}"></script>
+  <script src="{{url_for('static',filename = 'main.js')}}"></script>
+ 
+  
+    
+  </body>
+</html>

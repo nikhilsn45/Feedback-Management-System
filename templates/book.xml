@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="bookxsl.xsl"?>
+<catalogs>
+	<book>
+		<title>Book1</title>
+		<author>Author1</author>
+		<prize>$ 100</prize>
+		<year>2001</year>
+	</book>
+	<book>
+		<title>Book2</title>
+		<author>Author2</author>
+		<prize>$ 200</prize>
+		<year>2002</year>
+	</book>
+	<book>
+		<title>Book3</title>
+		<author>Author3</author>
+		<prize>$ 300</prize>
+		<year>2003</year>
+	</book>
+	<book>
+		<title>Book4</title>
+		<author>Author4</author>
+		<prize>$ 400</prize>
+		<year>2004</year>
+	</book>
+</catalogs>

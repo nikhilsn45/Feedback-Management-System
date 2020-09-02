@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>M.A.N.A.G.E.</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    
+    
+    <link href="https://fonts.googleapis.com/css?family=Muli:300,400,700,900" rel="stylesheet">
+    
+    <script src="{{url_for('static',filename ='jquery-3.3.1.min.js' )}}"></script>
+
+    <link rel="stylesheet" href="{{url_for('static',filename = 'icomoon/style.css')}}">
+    <link rel="stylesheet" href="{{url_for('static',filename = 'bootstrap.min.css')}}">
+    <link rel="stylesheet" href="{{url_for('static',filename = 'jquery-ui.css')}}">
+    <link rel="stylesheet" href="{{url_for('static',filename = 'owl.carousel.min.css')}}">
+    <link rel="stylesheet" href="{{url_for('static',filename = 'owl.theme.default.min.css')}}">
+    <link rel="stylesheet" href="{{url_for('static',filename = 'owl.theme.default.min.css')}}">
+    <link rel="stylesheet" href="{{url_for('static',filename = 'jquery.fancybox.min.css')}}">
+    <link rel="stylesheet" href="{{url_for('static',filename = 'bootstrap-datepicker.css')}}">
+    <link rel="stylesheet" href="{{url_for('static',filename = 'flaticon/font/flaticon.css')}}">
+    <link rel="stylesheet" href="{{url_for('static',filename = 'aos.css')}}">
+    <link rel="stylesheet" href="{{url_for('static',filename = 'style.css')}}">
+    
+  </head>
+  <body data-spy="scroll" data-target=".site-navbar-target" data-offset="300">
+  
+  <div class="site-wrap">
+
+    <div class="site-mobile-menu site-navbar-target">
+      <div class="site-mobile-menu-header">
+        <div class="site-mobile-menu-close mt-3">
+          <span class="icon-close2 js-menu-toggle"></span>
+        </div>
+      </div>
+      <div class="site-mobile-menu-body"></div>
+    </div>
+   
+    
+    <header class="site-navbar py-4 js-sticky-header site-navbar-target" role="banner">
+      
+      <div class="container-fluid">
+        <div class="d-flex align-items-center">
+          <div class="site-logo mr-auto w-25"><a href="{{url_for('home')}}">M.A.N.A.G.E.</a></div>
+        </div>
+      </div>
+      
+    </header>
+
+    <div class="intro-section" id="home-section">
+      
+      <div class="slide-1" style="background-image: url('/static/img_1.jpg');" data-stellar-background-ratio="0.5">
+        <div class="container">
+          <div class="row align-items-center">
+            <div class="col-12">
+              <div class="row align-items-center">
+                <div class="col-lg-7 mb-4" style="margin-top: 80px">
+                  <h1  data-aos="fade-up" data-aos-delay="100">Academics Is Important..</h1>
+                  <p class="mb-4"  data-aos="fade-up" data-aos-delay="200">Education is the passport to the future, for tomorrow belongs to those who prepare for it today</p>
+                  <form action="/admin/" method="post">
+                    <div class="form-group" data-aos="fade-up" data-aos-delay="300">
+                      <input type="submit" class="btn btn-primary btn-pill" value="ADMIN SIGNUP" name="submitdata">
+                    </div>
+                  </form>
+
+                </div>
+
+                <div class="col-lg-5 ml-auto" data-aos="fade-up" data-aos-delay="500">
+                  
+                  <form action="/feedback/" method="post" class="form-box form1">
+                    <h3 class="h4 text-black mb-4">For Students</h3>
+                     
+                     <div class="row align-items-center">
+                      <div class="col-lg-6 form-group">
+                        <label>College Name</label>
+                        <select class="form-control" name="clg" id="clg" required>
+                              {% for i in range(res|count) %}
+                                  <option value="{{res[i][0]}}">{{res[i][0]}}</option>
+                              {%endfor%}
+                           </select>
+                      </div>
+                      
+                      <div class="col-lg-6 form-group">
+                        <label>Department Name</label>
+                        <select class="form-control" name="dept" id="dept" required>
+                              {% for i in range(ress|count) %}
+                                  <option value="{{ress[i][0]}}">{{ress[i][0]}}</option>
+                              {%endfor%}
+                           </select>
+                      </div>
+                    </div>
+
+                    <div class="form-group">
+                      <select class="form-control" name="year" id="year" required>
+                        <option value="FE">1st Year</option>
+                        <option value="SE">2nd Year</option>
+                        <option value="TE">3rd Year</option>
+                        <option value="BE">4th Year</option>
+                      </select>
+                    </div>
+
+                    <div class="class" id="elects">
+                      
+                    </div>
+
+                    <div class="row align-items-center">
+                      <div class="col-lg-6 form-group">
+                        <input type="text" class="form-control" placeholder="Division" name="division"required>
+                      </div>
+                      
+                      <div class="col-lg-6 form-group">
+                        <input type="text" class="form-control" placeholder="Your Batch" name="batch"required>
+                      </div>
+                    </div>
+                    <div class="form-group" style="margin-top: 30px">
+                      <input type="submit" class="btn btn-primary btn-pill" value="Give the FEEDBACK" name="feedback"required>
+                    </div>
+                  </form>
+                  {% if alt %}
+                    <script type="text/javascript">
+                       alert("INCORRECT Division / DONT HAVE FACULTY")
+                    </script>
+                  {% endif%}
+
+                  {% if alt1 %}
+                    <script type="text/javascript">
+                       alert("INCORRECT BATCH / DONT HAVE FACULTY")
+                    </script>
+                  {% endif%}
+
+                </div>
+              </div>
+            </div>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+    
+  </div>
+
+      <script type="text/javascript">
+        $(document).ready(function() {
+           $(".form1").find("#year").change(function(event){
+            event.preventDefault();
+
+              var y = $('#year').val()
+              if(y == 'BE'){
+
+                var formdata = {
+                  'clg': $('#clg').val(),
+                  'dept': $('#dept').val()
+               }
+
+             $.ajax({
+                url: '/elect/',
+                type: 'POST',
+                data: formdata,
+                success: function(result) {
+                $(".class").html(result);
+               }
+             });
+
+            } else {
+
+              var formdata = {
+                  'clg': $('#clg').val(),
+                  'dept': $('#dept').val()
+               }
+
+             $.ajax({
+                url: '/blank/',
+                type: 'POST',
+                data: formdata,
+                success: function(result) {
+                $(".class").html(result);
+               }
+             });
+            }
+         });
+    });
+
+  </script>
+
+  <script src="{{url_for('static',filename ='jquery-3.3.1.min.js' )}}"></script>
+  <script src="{{url_for('static',filename = 'jquery-migrate-3.0.1.min.js')}}"></script>
+  <script src="{{url_for('static',filename = 'owl.carousel.min.js')}}"></script>
+  <script src="{{url_for('static',filename = 'jquery.stellar.min.js')}}"></script>
+  <script src="{{url_for('static',filename = 'jquery.countdown.min.js')}}"></script>
+  <script src="{{url_for('static',filename = 'aos.js')}}"></script>
+  <script src="{{url_for('static',filename = 'jquery.fancybox.min.js')}}"></script>
+  <script src="{{url_for('static',filename = 'jquery.sticky.js')}}"></script>
+  <script src="{{url_for('static',filename = 'main.js')}}"></script>
+    
+
+  </body>
+</html>
